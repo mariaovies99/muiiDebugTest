@@ -2,7 +2,7 @@
 #include "datos.h"
 #include "math.h"
  
-#define longitudTrama 500
+#define longitudTrama 250
  
 Timer timer;
 float resultado;
@@ -59,10 +59,10 @@ float calcularRMS(int16_t *datos, int longitud)
     float rms=0;
     float datoV;
     for (int i=0;i<longitud;i++){
-        datoV=datos[i]/32768*3.3;
+        datoV=datos[i];
         rms+=datoV*datoV;
     }
-    rms=sqrt(rms/longitud);
+    rms=sqrt(rms/longitud/32768.0*3.3/32768.0*3.3);
     return rms;
 }
  
